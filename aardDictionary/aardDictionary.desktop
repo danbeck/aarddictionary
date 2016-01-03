@@ -1,0 +1,8 @@
+[Desktop Entry]
+_Name=aardDictionary
+Exec=qmlscene $@ aardDictionary/Main.qml
+Icon=aardDictionary/aardDictionary.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+

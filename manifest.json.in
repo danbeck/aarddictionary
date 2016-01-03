@@ -1,0 +1,17 @@
+{
+    "name": "aarddictionary.danielbeck",
+    "description": "description of aardDictionary",
+    "architecture": "@CLICK_ARCH@",
+    "title": "aardDictionary",
+    "hooks": {
+        "aardDictionary": {
+            "apparmor": "aardDictionary/aardDictionary.apparmor",
+            "desktop":  "aardDictionary/aardDictionary.desktop"
+        }
+    },
+    "version": "0.1",
+    "maintainer": "Daniel Beck <d.danielbeck@googlemail.com>",
+    "framework" : "ubuntu-sdk-15.04"
+}
+
+
