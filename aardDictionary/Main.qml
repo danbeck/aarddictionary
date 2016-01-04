@@ -24,40 +24,69 @@ MainView {
     width: units.gu(100)
     height: units.gu(75)
 
+    AdaptivePageLayout {
+           id: layout
+           anchors.fill: parent
+           primaryPage: mainPage
 
-    Page {
-        title: i18n.tr("Aard Dictionaries")
+           layouts: [
+               PageColumnsLayout {
+                   when: layout.width > units.gu(80)
+                   PageColumn {
+                       minimumWidth: units.gu(30)
+                       maximumWidth: units.gu(50)
+                       preferredWidth: units.gu(40)
+                   }
+                   PageColumn {
+                       fillWidth: true
+                   }
+               },
+               // configure single column mode so we can only size it to minimum 20 GU
+               PageColumnsLayout {
+                   when: true
+                   PageColumn {
+                       minimumWidth: units.gu(20)
+                       fillWidth: true
+                   }
+               }
+           ]
 
-        MyType {
-            id: myType
 
-            Component.onCompleted: {
-                myType.helloWorld = i18n.tr("Hello world..")
+        Page {
+            id: mainPage
+            title: i18n.tr("Aard Dictionaries")
+
+            MyType {
+                id: myType
+
+                Component.onCompleted: {
+                    myType.helloWorld = i18n.tr("Hello world..")
+                }
             }
-        }
 
-        Column {
-            spacing: units.gu(1)
-            anchors {
-                margins: units.gu(2)
-                fill: parent
-            }
+            Column {
+                spacing: units.gu(1)
+                anchors {
+                    margins: units.gu(2)
+                    fill: parent
+                }
 
-            Label {
-                id: label
-                objectName: "label"
+                Label {
+                    id: label
+                    objectName: "label"
 
-                text: myType.helloWorld
-            }
+                    text: myType.helloWorld
+                }
 
-            Button {
-                objectName: "button"
-                width: parent.width
+                Button {
+                    objectName: "button"
+                    width: parent.width
 
-                text: i18n.tr("Tap me!")
+                    text: i18n.tr("Tap me!")
 
-                onClicked: {
-                    myType.helloWorld = i18n.tr("..from Cpp Backend")
+                    onClicked: {
+                        myType.helloWorld = i18n.tr("..from Cpp Backend")
+                    }
                 }
             }
         }
