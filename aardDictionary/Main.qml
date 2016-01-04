@@ -56,6 +56,19 @@ MainView {
             id: mainPage
             title: i18n.tr("Aard Dictionaries")
 
+            property list<Action> actionList:  [
+                Action {
+                    iconName: "find"
+                    text: "Search article"
+                },
+                Action {
+                    iconName: "settings"
+                    text: "Settings"
+                }
+            ]
+
+            head.actions: actionList
+
             MyType {
                 id: myType
 
