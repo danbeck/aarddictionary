@@ -1,4 +1,5 @@
 import QtQuick 2.4
+import QtQuick.XmlListModel 2.0
 import Ubuntu.Components 1.3
 import AardDictionary 1.0
 import Ubuntu.Components.ListItems 1.3 as ListItem
@@ -105,36 +106,106 @@ MainView {
                 // }
 
 
-                ListView {
-                    id: widgetList
-                    height: 200
-                    objectName: "widgetList"
-                    interactive: false
-                    delegate: Text {
-                        text: name + ": " + number
+                                ListItem.Subtitled {
+                                    text: "abc"
+                                    subText: "ABC are the first characters of the alphabet."
+                                    showDivider: false
+                                    iconName: "search"
+                //                    progression: true
+
+                                }
+
+                //                ListItem.Subtitled {
+                //                    text: "ABC"
+                //                    subText: "ABC are the first characters of the alphabet."
+                //                    showDivider: false
+                //                }
+
+                //                ListItem.Subtitled {
+                //                    text: "Advocate"
+                //                    subText: "HEre it coems. bli adfadsf dsf asdf.dsf ds fasdf.dsf ABC are the first characters of the alphabet."
+                //                    showDivider: false
+                //                }
+                UbuntuListView {
+
+                    anchors { left: parent.left; right: parent.right }
+
+                    height: units.gu(24)
+                    model: XmlListModel {
+                        source: "http://feeds.reuters.com/reuters/topNews"
+                        query: "/rss/channel/item"
+                        XmlRole { name: "title"; query: "title/string()" }
                     }
-                    //                    anchors.fill: parent
-                    model:  ContactModel {}
-                    //                    currentIndex: -1
+                    width: units.gu(40)
+                    // let refresh control know when the refresh gets completed
+                    pullToRefresh {
+                        refreshing: model.status === XmlListModel.Loading
+                        onRefresh: model.reload()
+                    }
+                    delegate:  Component {
+                        id: contactsDelegate
+                        Rectangle {
+                            id: wrapper
+                            width: 180
+                            height: headerText.height + contentText.height + units.gu(2)
+                            color: "white"
+                            Column{
+                                Text {
+                                    id: headerText
+                                    text: "Titel"
+                                    color: wrapper.ListView.isCurrentItem ? "grey" : "black"
+                                }
+                                Text {
+                                    id: contentText
+                                    text: "hier kommt der Text"
+                                    color: wrapper.ListView.isCurrentItem ? "grey" : "black"
+                                }
+                            }
+
+                        }
+                    }
+
+//                    delegate: ListItem.Standard {
+//                        width: ListView.view.width
+//                        height: units.gu(5)
+//                        text: modelData
+//                        onClicked: {
+//                            ListView.view.model.reload();
+//                        }
+//                    }
                 }
 
-//                Label {
-//                    id: label
-//                    objectName: "label"
 
-//                    text: myType.helloWorld
-//                }
+                //                ListView {
+                //                    id: widgetList
+                //                    height: 200
+                //                    objectName: "widgetList"
+                //                    interactive: false
+                //                    delegate: Text {
+                //                        text: name + ": " + number
+                //                    }
+                //                    //                    anchors.fill: parent
+                //                    model:  ContactModel {}
+                //                    //                    currentIndex: -1
+                //                }
 
-//                Button {
-//                    objectName: "button"
-//                    width: parent.width
+                //                Label {
+                //                    id: label
+                //                    objectName: "label"
 
-//                    text: i18n.tr("Tap me!")
+                //                    text: myType.helloWorld
+                //                }
 
-//                    onClicked: {
-//                        myType.helloWorld = i18n.tr("..from Cpp Backend")
-//                    }
-//                }
+                //                Button {
+                //                    objectName: "button"
+                //                    width: parent.width
+
+                //                    text: i18n.tr("Tap me!")
+
+                //                    onClicked: {
+                //                        myType.helloWorld = i18n.tr("..from Cpp Backend")
+                //                    }
+                //                }
             }
         }
     }
