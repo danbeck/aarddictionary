@@ -106,14 +106,14 @@ MainView {
                 // }
 
 
-                                ListItem.Subtitled {
-                                    text: "abc"
-                                    subText: "ABC are the first characters of the alphabet."
-                                    showDivider: false
-                                    iconName: "search"
-                //                    progression: true
+                ListItem.Subtitled {
+                    text: "abc"
+                    subText: "ABC are the first characters of the alphabet."
+                    showDivider: false
+                    iconName: "search"
+                    //                    progression: true
 
-                                }
+                }
 
                 //                ListItem.Subtitled {
                 //                    text: "ABC"
@@ -144,35 +144,17 @@ MainView {
                     }
                     delegate:  Component {
                         id: contactsDelegate
-                        Rectangle {
-                            id: wrapper
-                            width: 180
-                            height: headerText.height + contentText.height + units.gu(2)
-                            color: "white"
-                            Column{
-                                Text {
-                                    id: headerText
-                                    text: "Titel"
-                                    color: wrapper.ListView.isCurrentItem ? "grey" : "black"
-                                }
-                                Text {
-                                    id: contentText
-                                    text: "hier kommt der Text"
-                                    color: wrapper.ListView.isCurrentItem ? "grey" : "black"
-                                }
-                            }
-
-                        }
+                        ArticleItem{ }
                     }
 
-//                    delegate: ListItem.Standard {
-//                        width: ListView.view.width
-//                        height: units.gu(5)
-//                        text: modelData
-//                        onClicked: {
-//                            ListView.view.model.reload();
-//                        }
-//                    }
+                    //                    delegate: ListItem.Standard {
+                    //                        width: ListView.view.width
+                    //                        height: units.gu(5)
+                    //                        text: modelData
+                    //                        onClicked: {
+                    //                            ListView.view.model.reload();
+                    //                        }
+                    //                    }
                 }
 
 
