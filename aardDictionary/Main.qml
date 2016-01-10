@@ -144,7 +144,10 @@ MainView {
                     }
                     delegate:  Component {
                         id: contactsDelegate
-                        ArticleItem{ }
+                        ArticleItem{
+                            title:"abc"
+                            summary: "ABC are the three first letter of the alphabet. PI PA PO"
+                        }
                     }
 
                     //                    delegate: ListItem.Standard {
