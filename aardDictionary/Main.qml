@@ -14,11 +14,7 @@ MainView {
     // Note! applicationName needs to match the "name" field of the click manifest
     applicationName: "aarddictionary.danielbeck"
 
-    /*
-     This property enables the application to change orientation
-     when the device is rotated. The default is false.
-    */
-    //automaticOrientation: true
+    automaticOrientation: true
 
     // Removes the old toolbar and enables new features of the new header.
     // useDeprecatedToolbar: false
@@ -84,64 +80,25 @@ MainView {
             Column {
                 spacing: units.gu(1)
                 anchors {
-                    margins: units.gu(2)
+                    margins: units.gu(1)
                     fill: parent
                 }
 
                 ListModel {
                     id: groupedModel
-                    ListElement { name: "Orange"; type: "Fruit"}
-                    ListElement { name: "Apple"; type: "Fruit" }
-                    ListElement { name: "Tomato"; type: "Fruit" }
-                    ListElement { name: "Carrot"; type: "Vegetable" }
-                    ListElement { name: "Potato"; type: "Vegetable" }
+                    ListElement { name: "ABC"; type: "ABC are the first three letters of the Latin script known as the alphabet."}
+                    ListElement { name: "Advocate"; type: "An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\"." }
+                    ListElement { name: "Altruist"; type: "Altruism or selflessness is the principle or practice of concern for the welfare of others. " }
+                    ListElement { name: "Advocado"; type: "The avocado (Persea americana) is a tree native to Mexico." }
+                    ListElement { name: "Potato"; type: "The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum L." }
                 }
 
-                // ListItemsSection {
-                //     title: i18n.tr("Standard")
-                //     className: "Standard"
-                //     delegate: ListItem.Standard {
-                //         text: i18n.tr("Label")
-                //     }
-                // }
-
-
-                ListItem.Subtitled {
-                    text: "abc"
-                    subText: "ABC are the first characters of the alphabet."
-                    showDivider: false
-                    iconName: "search"
-                    //                    progression: true
-
-                }
-
-                //                ListItem.Subtitled {
-                //                    text: "ABC"
-                //                    subText: "ABC are the first characters of the alphabet."
-                //                    showDivider: false
-                //                }
-
-                //                ListItem.Subtitled {
-                //                    text: "Advocate"
-                //                    subText: "HEre it coems. bli adfadsf dsf asdf.dsf ds fasdf.dsf ABC are the first characters of the alphabet."
-                //                    showDivider: false
-                //                }
                 UbuntuListView {
+                    anchors.fill: parent
 
-                    anchors { left: parent.left; right: parent.right }
-
-                    height: units.gu(24)
-                    model: XmlListModel {
-                        source: "http://feeds.reuters.com/reuters/topNews"
-                        query: "/rss/channel/item"
-                        XmlRole { name: "title"; query: "title/string()" }
-                    }
+                    model: groupedModel
                     width: units.gu(40)
-                    // let refresh control know when the refresh gets completed
-                    pullToRefresh {
-                        refreshing: model.status === XmlListModel.Loading
-                        onRefresh: model.reload()
-                    }
+
                     delegate:  Component {
                         id: contactsDelegate
                         ArticleItem{
@@ -149,48 +106,7 @@ MainView {
                             summary: "ABC are the three first letter of the alphabet. PI PA PO"
                         }
                     }
-
-                    //                    delegate: ListItem.Standard {
-                    //                        width: ListView.view.width
-                    //                        height: units.gu(5)
-                    //                        text: modelData
-                    //                        onClicked: {
-                    //                            ListView.view.model.reload();
-                    //                        }
-                    //                    }
                 }
-
-
-                //                ListView {
-                //                    id: widgetList
-                //                    height: 200
-                //                    objectName: "widgetList"
-                //                    interactive: false
-                //                    delegate: Text {
-                //                        text: name + ": " + number
-                //                    }
-                //                    //                    anchors.fill: parent
-                //                    model:  ContactModel {}
-                //                    //                    currentIndex: -1
-                //                }
-
-                //                Label {
-                //                    id: label
-                //                    objectName: "label"
-
-                //                    text: myType.helloWorld
-                //                }
-
-                //                Button {
-                //                    objectName: "button"
-                //                    width: parent.width
-
-                //                    text: i18n.tr("Tap me!")
-
-                //                    onClicked: {
-                //                        myType.helloWorld = i18n.tr("..from Cpp Backend")
-                //                    }
-                //                }
             }
         }
     }

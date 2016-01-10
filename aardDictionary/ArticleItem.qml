@@ -6,7 +6,7 @@ Rectangle {
     width: 80
     height: headerText.height + contentText.height + units.gu(2)
     //color: "white"
-    color: wrapper.ListView.isCurrentItem ? "#dddddd" : "white"
+    color: wrapper.ListView.isCurrentItem ? "#eaeaea" : "white"
 
     property string title
     property string summary
@@ -26,7 +26,8 @@ Rectangle {
             id: headerText
             anchors.left: parent.left
             text: title
-            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
+//            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
+            color: "#990000"
             wrapMode: Text.Wrap
             //font.weight: Font.Bold
             font.pixelSize: 26
@@ -38,7 +39,7 @@ Rectangle {
                 right: parent.right
             }
             text: summary
-            color: wrapper.ListView.isCurrentItem ? "grey" : "black"
+            color: "black"
             wrapMode: Text.WordWrap
         }
     }
