@@ -4,7 +4,8 @@ import Ubuntu.Components 1.3
 Rectangle {
     id: wrapper
     width: 80
-    height: headerText.height + contentText.height + units.gu(2)
+//    height: headerText.height + contentText.height + units.gu(2)
+    height: units.gu(12)
     //color: "white"
     color: wrapper.ListView.isCurrentItem ? "#eaeaea" : "white"
 
@@ -22,11 +23,17 @@ Rectangle {
             right: parent.right
         }
 
+//        UbuntuShape {
+//            color: "black"
+//            image: Image {
+//                source: "../images/Wikipedia-logo.png"
+//            }
+//        }
         Text {
             id: headerText
             anchors.left: parent.left
             text: title
-//            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
+            //            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
             color: "#990000"
             wrapMode: Text.Wrap
             //font.weight: Font.Bold
@@ -38,10 +45,9 @@ Rectangle {
                 left: parent.left
                 right: parent.right
             }
-            text: summary
+            text: summary.length> 120? summary.substring(0,120): summary + "..."
             color: "black"
             wrapMode: Text.WordWrap
         }
     }
-
 }

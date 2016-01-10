@@ -85,25 +85,25 @@ MainView {
                 }
 
                 ListModel {
-                    id: groupedModel
-                    ListElement { name: "ABC"; type: "ABC are the first three letters of the Latin script known as the alphabet."}
-                    ListElement { name: "Advocate"; type: "An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\"." }
-                    ListElement { name: "Altruist"; type: "Altruism or selflessness is the principle or practice of concern for the welfare of others. " }
-                    ListElement { name: "Advocado"; type: "The avocado (Persea americana) is a tree native to Mexico." }
-                    ListElement { name: "Potato"; type: "The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum L." }
+                    id: articleModel
+                    ListElement { name: "ABC"; content: "ABC are the first three letters of the Latin script known as the alphabet."}
+                    ListElement { name: "Advocate"; content: "An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\".An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\"." }
+                    ListElement { name: "Altruist"; content: "Altruism or selflessness is the principle or practice of concern for the welfare of others. " }
+                    ListElement { name: "Advocado"; content: "The avocado (Persea americana) is a tree native to Mexico." }
+                    ListElement { name: "Potato"; content: "The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum L." }
                 }
 
                 UbuntuListView {
                     anchors.fill: parent
 
-                    model: groupedModel
+                    model: articleModel
                     width: units.gu(40)
 
                     delegate:  Component {
                         id: contactsDelegate
                         ArticleItem{
-                            title:"abc"
-                            summary: "ABC are the three first letter of the alphabet. PI PA PO"
+                            title:name
+                            summary: content
                         }
                     }
                 }
