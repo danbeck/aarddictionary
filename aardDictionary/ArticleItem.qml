@@ -8,6 +8,7 @@ Rectangle {
     height: units.gu(12)
     //color: "white"
     color: wrapper.ListView.isCurrentItem ? "#eaeaea" : "white"
+    //border.color: "black"
 
     property string title
     property string summary
@@ -36,8 +37,8 @@ Rectangle {
             //            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
             color: "#990000"
             wrapMode: Text.Wrap
+            font.bold: true
             lineHeight: 1.3
-
         }
         Text {
             id: contentText

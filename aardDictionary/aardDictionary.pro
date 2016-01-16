@@ -35,5 +35,7 @@ INSTALLS+=config_files qml_files desktop_file
 
 DISTFILES += \
     ContactModel.qml \
-    ArticleItem.qml
+    ArticleItem.qml \
+    StartPage.qml \
+    SearchPage.qml
 
