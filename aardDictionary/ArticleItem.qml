@@ -36,8 +36,8 @@ Rectangle {
             //            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
             color: "#990000"
             wrapMode: Text.Wrap
-            //font.weight: Font.Bold
-            font.pixelSize: 26
+            lineHeight: 1.3
+
         }
         Text {
             id: contentText
