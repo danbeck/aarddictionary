@@ -22,21 +22,6 @@ MainView {
     width: units.gu(100)
     height: units.gu(75)
 
-    actions:  [
-        Action {
-            iconName: "search"
-            text: "Search article"
-            shortcut: "Ctrl+F"
-            onTriggered: console.log("search pressed")
-        },
-        Action {
-            iconName: "settings"
-            text: "Settings"
-        }
-    ]
-
-
-
     StartPage {
         id:    mainPage
         onSearched: {
