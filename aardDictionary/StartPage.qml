@@ -53,16 +53,20 @@ Page {
         }
 
         UbuntuListView {
+            id: articleList
             anchors.fill: parent
 
             model: articleModel
             width: units.gu(40)
+
 
             delegate:  Component {
                 id: contactsDelegate
                 ArticleItem{
                     title:name
                     summary: content
+                    onItemClicked:     articleList.currentIndex = index;
+
                 }
             }
         }

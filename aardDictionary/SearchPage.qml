@@ -3,15 +3,22 @@ import Ubuntu.Components 1.3
 import AardDictionary 1.0
 
 Page {
-    title: i18n.tr("SearchPage")
-    visible: true
+    id: root
+    title: i18n.tr("Aard Dictionaries")
+    visible: false
+    signal searched
 
     property list<Action> actionList:  [
         Action {
+            id : search
             iconName: "search"
             text: "Search article"
             shortcut: "Ctrl+F"
-            onTriggered: console.log("search pressed")
+            onTriggered: {
+                console.log("search pressed");
+                root.searched()
+
+            }
         },
         Action {
             iconName: "settings"
@@ -20,6 +27,14 @@ Page {
     ]
 
     head.actions: actionList
+
+    MyType {
+        id: myType
+
+        Component.onCompleted: {
+            myType.helloWorld = i18n.tr("Hello world..")
+        }
+    }
 
     Column {
         spacing: units.gu(1)
@@ -30,11 +45,10 @@ Page {
 
         ListModel {
             id: articleModel
-            ListElement { name: "Search1"; content: "ABC are the first three letters of the Latin script known as the alphabet."}
-            ListElement { name: "Search2"; content: "An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\".An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\"." }
-            ListElement { name: "Search3"; content: "Altruism or selflessness is the principle or practice of concern for the welfare of others. " }
-            ListElement { name: "Search4"; content: "The avocado (Persea americana) is a tree native to Mexico." }
-            ListElement { name: "Search5"; content: "The potato is a starchy, tuberous crop from the perennial nightshade Solanum tuberosum L." }
+            ListElement { name: "Search1"; content: "Alphabet."}
+            ListElement { name: "Search2"; content: "Commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\".An advocate is a type of professional person in several different legal systems and it is also a commonly used honorific for remarkable lawyers, such as in \"Adv. Sir Alberico Gentili\"." }
+            ListElement { name: "Search3"; content: "Altruism or selflessness " }
+            ListElement { name: "Search4"; content: "Tree native to Mexico." }
         }
 
         UbuntuListView {
@@ -48,6 +62,7 @@ Page {
                 ArticleItem{
                     title:name
                     summary: content
+//                    onItemClicked: console.log("Search page - clicked")
                 }
             }
         }
