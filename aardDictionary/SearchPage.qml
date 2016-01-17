@@ -56,6 +56,7 @@ Page {
         }
 
         UbuntuListView {
+            id: searchList
             anchors.fill: parent
 
             model: articleModel
@@ -66,7 +67,7 @@ Page {
                 ArticleItem{
                     title:name
                     summary: content
-//                    onItemClicked: console.log("Search page - clicked")
+                    onItemClicked: searchList.currentIndex = index;
                 }
             }
         }

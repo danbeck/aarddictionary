@@ -2,12 +2,12 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 
 Rectangle {
-    id: wrapper
+    id: root
     width: 80
     //    height: headerText.height + contentText.height + units.gu(2)
     height: units.gu(12)
     //color: "white"
-    color: wrapper.ListView.isCurrentItem ? "#eaeaea" : "white"
+    color: root.ListView.isCurrentItem ? "#eaeaea" : "white"
     //border.color: "black"
 
     property string title
@@ -21,10 +21,7 @@ Rectangle {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: {
-            console.log("MouseArea - clicked");
-            wrapper.itemClicked();
-        }
+        onClicked: root.itemClicked()
     }
     Column{
         anchors {
@@ -32,13 +29,6 @@ Rectangle {
             left: parent.left
             right: parent.right
         }
-        /* MouseArea{
-            anchors.fill: parent
-            onClicked: {
-                console.log("Column - clicked");
-                wrapper.clicked();
-            }
-        }*/
 
 
         //        UbuntuShape {
@@ -51,20 +41,12 @@ Rectangle {
             id: headerText
             anchors.left: parent.left
             text: title
-            //            color: wrapper.ListView.isCurrentItem ? "grey" : "#990000"
+            //            color: root.ListView.isCurrentItem ? "grey" : "#990000"
             color: "#990000"
             wrapMode: Text.Wrap
             //            font.bold: true
             lineHeight: 1.3
             font.pixelSize: 22
-//            MouseArea {
-//                anchors.fill: parent
-//                onClicked: {
-//                    console.log("Title - clicked");
-//                    wrapper.clicked();
-//                }
-//            }
-
         }
         Text {
             id: contentText
@@ -75,13 +57,13 @@ Rectangle {
             text: summary.length> 120? summary.substring(0,120): summary + "..."
             color: "black"
             wrapMode: Text.WordWrap
-//            MouseArea {
-//                anchors.fill: parent
-//                onClicked: {
-//                    console.log("Description - clicked");
-//                    wrapper.clicked();
-//                }
-//            }
+            //            MouseArea {
+            //                anchors.fill: parent
+            //                onClicked: {
+            //                    console.log("Description - clicked");
+            //                    root.clicked();
+            //                }
+            //            }
 
         }
     }

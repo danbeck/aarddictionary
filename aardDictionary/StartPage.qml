@@ -65,7 +65,7 @@ Page {
                 ArticleItem{
                     title:name
                     summary: content
-                    onItemClicked:     articleList.currentIndex = index;
+                    onItemClicked: articleList.currentIndex = index;
                 }
             }
         }
