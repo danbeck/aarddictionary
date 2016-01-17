@@ -17,7 +17,8 @@ Q_SIGNALS:
 
 protected:
     QString helloWorld() { return m_message; }
-    void setHelloWorld(QString msg) { m_message = msg; Q_EMIT helloWorldChanged(); }
+    void setHelloWorld(QString msg);
+//{ m_message = msg; Q_EMIT helloWorldChanged(); }
 
     QString m_message;
 };

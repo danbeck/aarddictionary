@@ -10,17 +10,6 @@ Page {
 
     property list<Action> actionList:  [
         Action {
-            id : search
-            iconName: "search"
-            text: "Search article"
-            shortcut: "Ctrl+F"
-            onTriggered: {
-                console.log("search pressed");
-                root.searched()
-
-            }
-        },
-        Action {
             iconName: "settings"
             text: "Settings"
         }
@@ -30,6 +19,14 @@ Page {
     head.contents: TextField {
         width: parent.width
         placeholderText : i18n.tr("Search for article...")
+        action: Action {
+            iconName: "search"
+            onTriggered: {
+                console.log("entered hit");
+                myType.helloWorld = "Here we go!";
+            }
+
+        }
     }
 
     MyType {
