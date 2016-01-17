@@ -66,7 +66,6 @@ Page {
                     title:name
                     summary: content
                     onItemClicked:     articleList.currentIndex = index;
-
                 }
             }
         }

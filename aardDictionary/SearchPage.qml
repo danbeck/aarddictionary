@@ -27,6 +27,10 @@ Page {
     ]
 
     head.actions: actionList
+    head.contents: TextField {
+        width: parent.width
+        placeholderText : i18n.tr("Search for article...")
+    }
 
     MyType {
         id: myType
